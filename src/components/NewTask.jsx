@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ProductContext } from "../store/ProductContext";
 
-function NewTask({ onAdd }) {
+function NewTask() {
+  const { onAddTask } = useContext(ProductContext);
+
   const [enteredTask, setEnteredTask] = useState("");
   function handleChange(event) {
     setEnteredTask(event.target.value);
   }
 
   function handleClick() {
-    onAdd(enteredTask);
+    onAddTask(enteredTask);
     setEnteredTask("");
   }
   return (

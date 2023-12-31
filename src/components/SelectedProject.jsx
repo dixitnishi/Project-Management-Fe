@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Tasks from "./Tasks";
+import { ProductContext } from "../store/ProductContext";
 
-function SelectedProject({ project, onDelete, onAddTask, onDeleteTask, tasks }) {
+function SelectedProject({ project }) {
+  const { onDelete } = useContext(ProductContext);
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -25,7 +27,7 @@ function SelectedProject({ project, onDelete, onAddTask, onDeleteTask, tasks }) 
           {project.description}
         </p>
       </header>
-      <Tasks tasks={tasks} onAdd={onAddTask} onDelete={onDeleteTask}></Tasks>
+      <Tasks />
     </div>
   );
 }

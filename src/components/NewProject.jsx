@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
+import { ProductContext } from "../store/ProductContext";
 
-function NewProject({ onAdd, onCancel }) {
+function NewProject() {
+  const { onAdd, onCancel } = useContext(ProductContext);
   const modal = useRef();
   const title = useRef();
   const description = useRef();
